@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Mock yt-dlp for testing
+# Behavior is controlled via YT_DLP_MOCK_MODE env var
+
+case "${YT_DLP_MOCK_MODE:-}" in
+list-subs)
+  # Called with --list-subs: output fixture data
+  cat "$FIXTURES_DIR/yt-dlp-list-subs.txt"
+  ;;
+list-subs-empty)
+  echo "[info] Available subtitles for abc123:"
+  echo "Language  Formats"
+  ;;
+download-vtt)
+  # Called to download subs: copy fixture into the output dir
+  for arg in "$@"; do
+    case "$arg" in
+    */*)
+      # This is the -o template; extract the directory
+      outdir=$(dirname "$arg")
+      cp "$FIXTURES_DIR/sample.vtt" "$outdir/TestVideo.en.vtt"
+      exit 0
+      ;;
+    esac
+  done
+  ;;
+download-srt)
+  for arg in "$@"; do
+    case "$arg" in
+    */*)
+      outdir=$(dirname "$arg")
+      cp "$FIXTURES_DIR/sample.srt" "$outdir/TestVideo.en.srt"
+      exit 0
+      ;;
+    esac
+  done
+  ;;
+no-subs)
+  # Simulate no subtitle file being written
+  exit 0
+  ;;
+*)
+  echo "yt-dlp mock: unknown mode '${YT_DLP_MOCK_MODE:-}'" >&2
+  exit 1
+  ;;
+esac

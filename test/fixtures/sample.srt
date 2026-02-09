@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:03,000
+Hello and welcome to this video
+
+2
+00:00:03,000 --> 00:00:06,000
+Today we will talk about Nix
+
+3
+00:00:06,000 --> 00:00:09,000
+Today we will talk about Nix
+
+4
+00:00:09,000 --> 00:00:12,000
+Nix is a powerful package manager
+
+5
+00:00:12,000 --> 00:00:15,000
+It provides reproducible builds

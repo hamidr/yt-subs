@@ -1,0 +1,12 @@
+[info] Available subtitles for dQw4w9WgXcQ:
+Language  Formats
+en        vtt, ttml, srv3, srv2, srv1, json3
+fr        vtt, ttml, srv3, srv2, srv1, json3
+[info] Available automatic captions for dQw4w9WgXcQ:
+Language  Formats
+en        vtt, ttml, srv3, srv2, srv1, json3
+es        vtt, ttml, srv3, srv2, srv1, json3
+nl        vtt, ttml, srv3, srv2, srv1, json3
+fa        vtt, ttml, srv3, srv2, srv1, json3
+de        vtt, ttml, srv3, srv2, srv1, json3
+ja        vtt, ttml, srv3, srv2, srv1, json3
