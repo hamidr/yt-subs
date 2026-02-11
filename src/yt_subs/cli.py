@@ -8,7 +8,7 @@ from .subtitles import (
     filter_preferred,
     list_languages,
 )
-from .summarizer import OllamaSummarizer
+from .summarizer import OllamaSummarizer, Summarizer
 from .types import (
     DEFAULT_MODEL,
     DEFAULT_PREFERRED_LANGS,
@@ -76,7 +76,7 @@ def _find_language_by_code(
     return None
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, summarizer: Summarizer | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
@@ -118,7 +118,8 @@ def main(argv: list[str] | None = None) -> int:
 
     transcript = clean_subtitle(content)
 
-    summarizer = OllamaSummarizer(model=model)
+    if summarizer is None:
+        summarizer = OllamaSummarizer(model=model)
 
     try:
         summary = summarizer.summarize(transcript.text, DEFAULT_SUMMARIZATION_PROMPT)
